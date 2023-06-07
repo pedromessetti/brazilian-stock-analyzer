@@ -1,8 +1,11 @@
 import pandas as pd
 
 def perform_data_analysis():
-    # Read the CSV file into a DataFrame
-    df = pd.read_csv('tabela.csv', sep=',')
+    try:
+        # Read the CSV file into a DataFrame
+        df = pd.read_csv('tabela.csv', sep=',')
+    except FileNotFoundError:
+        return None
 
     # Clean up the data and convert numeric columns to the appropriate data types
     numeric_columns = ['Cotação', 'P/L', 'P/VP', 'Div.Yield']
@@ -10,7 +13,6 @@ def perform_data_analysis():
 
     # Perform basic data analysis
     stock_count = len(df)
-    average_price = df['Cotação'].mean()
     max_pe_stock = df.loc[df['P/L'].idxmax()]
     max_pe_ratio = max_pe_stock['P/L']
     max_pb_stock = df.loc[df['P/VP'].idxmax()]
@@ -27,7 +29,6 @@ def perform_data_analysis():
     analysis_results = {
         'df': df,
         'stock_count': stock_count,
-        'average_price': average_price,
         'max_pe_stock': max_pe_stock,
         'max_pe_ratio': max_pe_ratio,
         'max_pb_stock': max_pb_stock,
