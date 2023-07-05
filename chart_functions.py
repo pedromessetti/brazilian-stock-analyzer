@@ -1,6 +1,6 @@
 import matplotlib
-matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
+matplotlib.use('TkAgg')
 
 def display_bar_chart(data, option, n):
     top_stocks = data.head(n)

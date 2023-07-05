@@ -1,8 +1,39 @@
 import tkinter as tk
 from tkinter import ttk
-from undervalued_stocks import open_undervalued_stocks_window
-from overvalued_stocks import open_overvalued_stocks_window
-from chart_functions import display_bar_chart
+from data_analysis import perform_data_analysis
+
+def open_stock_window(root, window_title, stocks_key):
+    analysis_results = perform_data_analysis()
+
+    def display_stocks():
+        n = int(stock_entry.get())
+        stocks = analysis_results[stocks_key]['Papel'][:n]
+
+        # Clear previous stock names if any
+        for widget in stock_window.winfo_children():
+            widget.destroy()
+
+        # Display the stocks in the window
+        stock_label = ttk.Label(stock_window, text='\n'.join(stocks))
+        stock_label.pack(padx=10, pady=10)
+
+    # Create a new window for stocks
+    stock_window = tk.Toplevel(root)
+    stock_window.title(window_title)
+
+    # Create a label and entry for the number of stocks to display
+    ttk.Label(stock_window, text='Number of Stocks:').pack()
+    stock_entry = ttk.Entry(stock_window)
+    stock_entry.pack()
+
+    # Create a button to display the stocks
+    stock_button = ttk.Button(
+        stock_window,
+        text='Display Stocks',
+        command=display_stocks
+    )
+    stock_button.pack(pady=10)
+
 
 def open_main_window(analysis_results):
     '''Function to generate the main window'''
@@ -37,13 +68,14 @@ def open_main_window(analysis_results):
     )).pack()
 
     # Button to open the undervalued stocks window
-    undervalued_button = ttk.Button(root, text='Undervalued Stocks', command=lambda: open_undervalued_stocks_window(root))
+    undervalued_button = ttk.Button(root, text='Undervalued Stocks',
+                                   command=lambda: open_stock_window(root, 'Undervalued Stocks', 'undervalued_stocks'))
     undervalued_button.pack(pady=10)
 
     # Button to open the overvalued stocks window
-    overvalued_button = ttk.Button(root, text='Overvalued Stocks', command=lambda: open_overvalued_stocks_window(root))
+    overvalued_button = ttk.Button(root, text='Overvalued Stocks',
+                                   command=lambda: open_stock_window(root, 'Overvalued Stocks', 'overvalued_stocks'))
     overvalued_button.pack(pady=10)
-
 
     # Chart options combobox
     ttk.Label(root, text='Chart Option:').pack()

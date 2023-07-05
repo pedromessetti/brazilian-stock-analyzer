@@ -1,11 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
-
 from data_analysis import perform_data_analysis
 
 analysis_results = perform_data_analysis()
 
-# Function to open a new window displaying overvalued stocks
 def open_overvalued_stocks_window(root):
     def display_overvalued_stocks():
         n = int(overvalued_entry.get())

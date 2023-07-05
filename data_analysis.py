@@ -1,13 +1,6 @@
 import pandas as pd
 
 def perform_data_analysis():
-    """
-    The function performs basic data analysis on a CSV file containing stock data and returns the
-    results in a dictionary.
-    Returns a dictionary containing various results of
-    basic data analysis performed on a CSV file. If the CSV file is not found, the function returns
-    `None`.
-    """
     try:
         # Read the CSV file into a DataFrame
         df = pd.read_csv('tabela.csv', sep=',')

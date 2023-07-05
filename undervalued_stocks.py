@@ -1,12 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
-
 from data_analysis import perform_data_analysis
 
 analysis_results = perform_data_analysis()
 
 def open_undervalued_stocks_window(root):
-    '''Function to open a new window displaying undervalued stocks'''
     def display_undervalued_stocks():
         n = int(undervalued_entry.get())
         undervalued_stocks = analysis_results['undervalued_stocks']['Papel'][:n]
