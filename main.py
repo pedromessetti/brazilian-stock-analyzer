@@ -1,9 +1,9 @@
-import subprocess
+from generate_csv import generate_csv
 from stock_analysis_gui import open_main_window
 from data_analysis import perform_data_analysis
 
 # Generate the CSV File
-subprocess.run(['python3', 'generate_csv.py'])
+generate_csv()
 
 # Perform data analysis and store the results
 analysis_results = perform_data_analysis()

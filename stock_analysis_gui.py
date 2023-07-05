@@ -10,33 +10,29 @@ def open_main_window(analysis_results):
     root.title('Stock Analysis')
 
     # Display the analysis information
-    ttk.Label(root, text='{} stocks analyzed'.format(str(analysis_results['stock_count']))).pack(pady=10)
+    ttk.Label(root, text='{} stocks analyzed\n'.format(str(analysis_results['stock_count']))).pack(pady=10)
 
-    ttk.Label(root, text='Max P/E Ratio:').pack()
-    ttk.Label(root, text='{} - P/E: {} - P/B: {}'.format(
+    ttk.Label(root, text='Max P/L').pack()
+    ttk.Label(root, text='{} = {}'.format(
         analysis_results['max_pe_stock']['Papel'],
-        analysis_results['max_pe_stock']['P/L'],
-        analysis_results['max_pe_stock']['P/VP']
+        analysis_results['max_pe_stock']['P/L']
     )).pack()
 
-    ttk.Label(root, text='Min P/E Ratio:').pack()
-    ttk.Label(root, text='{} - P/E: {} - P/B: {}'.format(
+    ttk.Label(root, text='Min P/L').pack()
+    ttk.Label(root, text='{} = {}\n\n'.format(
         analysis_results['min_pe_stock']['Papel'],
-        analysis_results['min_pe_stock']['P/L'],
-        analysis_results['min_pe_stock']['P/VP']
+        analysis_results['min_pe_stock']['P/L']
     )).pack()
 
-    ttk.Label(root, text='Max P/B Ratio:').pack()
-    ttk.Label(root, text='{} - P/E: {} - P/B: {}'.format(
+    ttk.Label(root, text='Max P/VP').pack()
+    ttk.Label(root, text='{} = {}'.format(
         analysis_results['max_pb_stock']['Papel'],
-        analysis_results['max_pb_stock']['P/L'],
         analysis_results['max_pb_stock']['P/VP']
     )).pack()
 
-    ttk.Label(root, text='Min P/B Ratio:').pack()
-    ttk.Label(root, text='{} - P/E: {} - P/B: {}'.format(
+    ttk.Label(root, text='Min P/VP').pack()
+    ttk.Label(root, text='{} = {}\n'.format(
         analysis_results['min_pb_stock']['Papel'],
-        analysis_results['min_pb_stock']['P/L'],
         analysis_results['min_pb_stock']['P/VP']
     )).pack()
 
