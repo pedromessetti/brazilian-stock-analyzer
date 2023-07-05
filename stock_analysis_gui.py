@@ -1,13 +1,14 @@
 import tkinter as tk
 from tkinter import ttk
 from data_analysis import perform_data_analysis
+from chart_functions import display_bar_chart
 
 def open_stock_window(root, window_title, stocks_key):
     analysis_results = perform_data_analysis()
 
     def display_stocks():
         n = int(stock_entry.get())
-        stocks = analysis_results[stocks_key]['Papel'][:n]
+        stocks = analysis_results[stocks_key]['PAPEL'][:n]
 
         # Clear previous stock names if any
         for widget in stock_window.winfo_children():
@@ -45,25 +46,25 @@ def open_main_window(analysis_results):
 
     ttk.Label(root, text='Max P/L').pack()
     ttk.Label(root, text='{} = {}'.format(
-        analysis_results['max_pe_stock']['Papel'],
+        analysis_results['max_pe_stock']['PAPEL'],
         analysis_results['max_pe_stock']['P/L']
     )).pack()
 
     ttk.Label(root, text='Min P/L').pack()
     ttk.Label(root, text='{} = {}\n\n'.format(
-        analysis_results['min_pe_stock']['Papel'],
+        analysis_results['min_pe_stock']['PAPEL'],
         analysis_results['min_pe_stock']['P/L']
     )).pack()
 
     ttk.Label(root, text='Max P/VP').pack()
     ttk.Label(root, text='{} = {}'.format(
-        analysis_results['max_pb_stock']['Papel'],
+        analysis_results['max_pb_stock']['PAPEL'],
         analysis_results['max_pb_stock']['P/VP']
     )).pack()
 
     ttk.Label(root, text='Min P/VP').pack()
     ttk.Label(root, text='{} = {}\n'.format(
-        analysis_results['min_pb_stock']['Papel'],
+        analysis_results['min_pb_stock']['PAPEL'],
         analysis_results['min_pb_stock']['P/VP']
     )).pack()
 
@@ -79,7 +80,7 @@ def open_main_window(analysis_results):
 
     # Chart options combobox
     ttk.Label(root, text='Chart Option:').pack()
-    chart_options = ['Cotação', 'P/L', 'P/VP', 'Div.Yield']
+    chart_options = ['COTAÇÃO', 'P/L', 'P/VP', 'DIV.YIELD']
     chart_combobox = ttk.Combobox(root, values=chart_options)
     chart_combobox.pack(pady=5)
 

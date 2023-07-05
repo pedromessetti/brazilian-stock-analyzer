@@ -3,10 +3,10 @@ import pandas as pd
 def perform_data_analysis():
     try:
         # Read the CSV file into a DataFrame
-        df = pd.read_csv('tabela.csv', sep=',')
+        df = pd.read_csv('stocks.csv', sep=',')
 
         # Clean up the data and convert numeric columns to the appropriate data types
-        numeric_columns = ['Cotação', 'P/L', 'P/VP', 'Div.Yield']
+        numeric_columns = ['COTAÇÃO', 'P/L', 'P/VP', 'DIV.YIELD']
         df[numeric_columns] = df[numeric_columns].astype(float)
 
         # Perform basic data analysis
